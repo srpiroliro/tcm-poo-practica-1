@@ -1,4 +1,4 @@
-
+// test
 import Keyboard.*;
 import java.util.Random;
 
@@ -22,7 +22,7 @@ public class Practica1 {
 				k = random.nextInt(d);
 			} while (joc[j][k]);
 			joc[j][k] = true;
-			System.out.println("Organisme a la posició: " + j + "," + k);
+			System.out.println("Organisme a la posiciï¿½: " + j + "," + k);
 		}
 		System.out.println("Inicialment");
 		System.out.println("***********");
@@ -32,7 +32,7 @@ public class Practica1 {
 		int[] vius = new int[g];
 
 		for (int i = 0; i < g; i++) {
-			System.out.println("Evolució: " + (i + 1));
+			System.out.println("Evoluciï¿½: " + (i + 1));
 			System.out.println("***********");
 
 			for (int x = 0; x < d; x++) {
@@ -63,7 +63,7 @@ public class Practica1 {
 			v = 0;
 			n = 0;
 			for (int i = 0; i < g; i++) {
-				System.out.print("Evolució: " + (i+1) + "--> hi ha " + vius[i]);
+				System.out.print("Evoluciï¿½: " + (i+1) + "--> hi ha " + vius[i]);
 				if (vius[i] == 1)
 					System.out.println(" organisme");
 				else
@@ -78,10 +78,10 @@ public class Practica1 {
 			}
 			System.out.println();
 			if (f)
-				System.out.println("Hi ha més d'una evolució amb la mateixa vida ("
-									+ v + "organismes. Una d'elles és la" + (n+1));
+				System.out.println("Hi ha mï¿½s d'una evoluciï¿½ amb la mateixa vida ("
+									+ v + "organismes. Una d'elles ï¿½s la" + (n+1));
 			else
-				System.out.println("L'evolució " + (n+1) + " és la que més vida a tingut,"
+				System.out.println("L'evoluciï¿½ " + (n+1) + " ï¿½s la que mï¿½s vida a tingut,"
 									+ " amb un total de " + v + " organismes");
 		}
 		else System.out.println("La vida s'ha acabat");
@@ -112,8 +112,8 @@ public class Practica1 {
 		for (int i = 0; i < mapa.length; i++) {
 			for (int j = 0; j < mapa[0].length; j++) {
 				/*
-				 * Aquests caràcters potser han de ser modificats per tal de tenir una correcta
-				 * impressió per consola si es canvia d'ordinador: - viu: 0x25A0 - mort: 0x25A1
+				 * Aquests carï¿½cters potser han de ser modificats per tal de tenir una correcta
+				 * impressiï¿½ per consola si es canvia d'ordinador: - viu: 0x25A0 - mort: 0x25A1
 				 */
 				if (mapa[i][j])
 					m += (char) 0x25A0;
