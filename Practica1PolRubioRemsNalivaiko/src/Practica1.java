@@ -62,7 +62,7 @@ public class Practica1 {
 		boolean partida = true;
 		
 		while(partida) {
-			n++;
+			num_partides++;
 			int current_gen=0;
 			boolean seguir=true;
 			while (current_gen<g && seguir) {
@@ -81,7 +81,6 @@ public class Practica1 {
 			} while (triat!='y'||triat!='n');
 			
 			seguir=(triat=='y');
-			if (seguir)  num_partides+=1;
 		}
 		System.out.print("Has jugat un total de " + num_partides);
 		if (num_partides == 1)
