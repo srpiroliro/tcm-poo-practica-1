@@ -6,27 +6,8 @@ import java.util.Random;
 
 public class Practica1 {
 
-	private static void generecio(boolean joc[][], boolean aux[][]) {
-		for (int x = 0; x < joc.length; x++) {
-			for (int y = 0; y < joc[0].length; y++) {
-				n = numVeins(joc, {joc.length, joc[0].length}, {x,y});
-				System.out.print(n + " ");{
-
-				if (!joc[x][y] && n == 3)
-					aux[x][y] = true;
-				else if (joc[x][y] && (n < 2 || n > 3))
-					aux[x][y] = false;
-				else
-					aux[x][y] = joc[x][y];
-				if (aux[x][y])
-					v++;
-			}
-			System.out.println();
-		}
-		vius[i] = v;
-		if(v==0) {e = false; i = g;}
-		v = 0;
-		System.out.println();
+	private static void generecio() {
+		
 	}
 	
 	public static void main(String[] args) {
@@ -58,12 +39,31 @@ public class Practica1 {
 
 		for (int i = 0; i < g; i++) {
 			
-			boolean[][] aux = totFalse(d);
+boolean[][] aux = totFalse(d);
 			
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
 
-			generacio();
+			for (int x = 0; x < joc.length; x++) {
+				for (int y = 0; y < joc[0].length; y++) {
+					n = numVeins(joc, d, x, y);
+					System.out.print(n + " ");
+
+					if (!joc[x][y] && n == 3)
+						aux[x][y] = true;
+					else if (joc[x][y] && (n < 2 || n > 3))
+						aux[x][y] = false;
+					else
+						aux[x][y] = joc[x][y];
+					if (aux[x][y])
+						v++;
+				}
+				System.out.println();
+			}
+			vius[i] = v;
+			if(v==0) {e = false; i = g;}
+			v = 0;
+			System.out.println();
 			
 			
 			joc = aux;

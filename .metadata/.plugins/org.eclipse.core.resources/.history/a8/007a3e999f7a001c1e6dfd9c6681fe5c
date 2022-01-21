@@ -9,8 +9,8 @@ public class Practica1 {
 	private static void generecio(boolean joc[][], boolean aux[][]) {
 		for (int x = 0; x < joc.length; x++) {
 			for (int y = 0; y < joc[0].length; y++) {
-				n = numVeins(joc, {joc.length, joc[0].length}, {x,y});
-				System.out.print(n + " ");{
+				n = numVeins(joc, joc.length, joc[0].length, x, y);
+				System.out.print(n + " ");
 
 				if (!joc[x][y] && n == 3)
 					aux[x][y] = true;
