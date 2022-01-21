@@ -18,7 +18,7 @@ public class Practica1 {
 		int d = intSense("Indica l'amplada del taulell", 5, 15);
 		int h = intSense("Indica l'alçada del taulell", 5, 15);
 
-		boolean[][] joc = totFalse(d);
+		boolean[][] joc = totFalse(d, h);
 		
 
 		int m = intSense("Indica quants organismes vius hi vols posar", 1, d * d);
@@ -40,7 +40,7 @@ public class Practica1 {
 
 		for (int i = 0; i < g; i++) {
 			
-boolean[][] aux = totFalse(d);
+			boolean[][] aux = totFalse(d, h);
 			
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
