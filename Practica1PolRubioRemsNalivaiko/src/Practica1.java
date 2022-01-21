@@ -35,11 +35,10 @@ public class Practica1 {
 
 		int d = intSense("Indica l'amplada del taulell", 5, 15);
 		int h = intSense("Indica l'alcada del taulell", 5, 15);
-
 		boolean[][] joc = totFalse(d, h);
 		
 
-		int m = intSense("Indica quants organismes vius hi vols posar", 1, d * d);
+		int m = intSense("Indica quants organismes vius hi vols posar", 1, d*h);
 
 		int x,y=0;
 		for (int i = 0; i < m; i++) {
@@ -57,28 +56,22 @@ public class Practica1 {
 		int g = intSense("Indica quantes generacions vols", 1, 10);
 		int[] vius = new int[g];
 
-		for (int i = 0; i < g; i++) {
-			
-
-			boolean[][] aux = totFalse(d, h);
-			System.out.println("Evolucio: " + (i + 1));
-			System.out.println("***********");
-
-
-			generacio(joc, aux);
-			
-			
-			System.out.println(mapa(joc));
-			if (joc==aux) {
-				// parar joc, 2gens seguides iguals.
-			} else {
-				joc = aux;
-				aux=totFalse(d,h);
+		boolean partida =true;
+		
+		while(partida) {
+			int current_gen=0;
+			boolean seguir=true;
+			while (current_gen<g && seguir) {
+				boolean[][] aux = totFalse(d, h);
+				System.out.println("Evolucio: " + (current_gen + 1));
+				System.out.println("***********");
+	
+	
+				generacio(joc, aux);	
 			}
-			
+	
+			textFinal(vius);
 		}
-
-		textFinal(vius);
 		
 		
 	}
