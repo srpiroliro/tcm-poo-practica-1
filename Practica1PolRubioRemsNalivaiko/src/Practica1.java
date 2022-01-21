@@ -97,9 +97,14 @@ public class Practica1 {
 		if (f)
 			System.out.println("Hi ha mes d'una evolucio amb la mateixa vida ("
 								+ v + "organismes. Una d'elles es la" + (n+1));
-		else
-			System.out.println("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
-								+ " amb un total de " + v + " organismes");
+		else {
+			System.out.print("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
+								+ " amb un total de " + v);
+			if (v == 1)
+				System.out.println(" organisme");
+			else
+				System.out.println(" organismes");
+		}
 	}
 
 	private static int intSense(String pregunta, int m, int M) {
