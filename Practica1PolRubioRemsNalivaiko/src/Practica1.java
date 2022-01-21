@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class Practica1 {
 
-	private static boolean generacio(boolean joc[][], boolean aux[][], int[] vius, int i) {
+	private static boolean[][] generacio(boolean joc[][], boolean aux[][], int[] vius, int i) {
 		int n, v = 0, j = 0;
 	
 		for (int x = 0; x < joc.length; x++) {
 			for (int y = 0; y < joc[0].length; y++) {
 				n = numVeins(joc,x,y);
-				System.out.print(n + " ");
+//				System.out.print(n + " ");
 
 				if (!joc[x][y] && n == 3)
 					aux[x][y] = true;
@@ -18,44 +18,31 @@ public class Practica1 {
 					aux[x][y] = false;
 				else
 					aux[x][y] = joc[x][y];
+				
+				
 				if (aux[x][y])
 					v++;
 				if(joc[x][y] == aux[x][y])
 					j++;
 			}
-			System.out.println();
+//			System.out.println();
 		}
 		vius[i] = v;
-		if(v==0 || joc.length*joc[0].length == j) {return true;}
+		System.out.println(j);
+		if(v==0 || joc.length*joc[0].length == j) {return(totFalse(joc.length, joc[0].length));}
 		v = 0;
-		return false;
+		
+		System.out.println(mapa(joc));
+		
+		return aux;
 	}
 	
 	public static void main(String[] args) {
 		Random random = new Random();
 
-		int d = intSense("Indica l'amplada del taulell", 5, 15);
-		int h = intSense("Indica l'alcada del taulell", 5, 15);
-		boolean[][] joc = totFalse(d, h);
-		
-
+		int d = intSense("Indica l'alcada del taulell", 5, 15);
+		int h = intSense("Indica l'amplada del taulell", 5, 15);
 		int m = intSense("Indica quants organismes vius hi vols posar", 1, d*h);
-
-		int x,y=0;
-		for (int i = 0; i < m; i++) {
-			do {
-				x = random.nextInt(d);
-				y = random.nextInt(h);
-			} while (joc[x][y]);
-			joc[x][y] = true;
-			System.out.println("Organisme a la posicio: " + x + "," + y);
-		}
-		System.out.println("Inicialment");
-		System.out.println("***********");
-		System.out.println(mapa(joc));
-
-		int g = intSense("Indica quantes generacions vols", 1, 10);
-		int[] vius = new int[g];
 
 		
 		int num_partides = 0;
@@ -63,14 +50,46 @@ public class Practica1 {
 		
 		while(partida) {
 			num_partides++;
+			boolean[][] joc = totFalse(d, h);
+			
+			// gen organismes
+			int x,y=0;
+			for (int i = 0; i < m; i++) {
+				do {
+					x = random.nextInt(d);
+					y = random.nextInt(h);
+				} while (joc[x][y]);
+				joc[x][y] = true;
+				System.out.println("Organisme a la posicio: " + x + "," + y);
+			}
+			System.out.println("Inicialment");
+			System.out.println("***********");
+			System.out.println(mapa(joc));
+			
+			int g = intSense("Indica quantes generacions vols", 1, 10);
+			int[] vius = new int[g];
+			
 			int current_gen=0;
 			boolean seguir=true;
 			while (current_gen<g && seguir) {
 				boolean[][] aux = totFalse(d, h);
 				System.out.println("Evolucio: " + (current_gen + 1));
 				System.out.println("***********");
-	
-				seguir = generacio(joc, aux, vius, current_gen);
+				
+				aux=generacio(joc, aux, vius, current_gen);
+				System.out.println(mapa(joc));
+				int falsos=0;
+				for (x = 0; x < aux.length; x++) {
+					for (y = 0; y < aux[0].length; y++) {
+						joc[x][y]=aux[x][y];
+						if(!aux[x][y]) falsos++;
+					}
+				}
+				
+				seguir=(falsos!=d*h);
+				
+				System.out.println(mapa(joc));
+				current_gen++;
 			}
 			textFinal(vius);
 			
@@ -82,6 +101,8 @@ public class Practica1 {
 			
 			seguir=(triat=='y');
 		}
+		
+		
 		System.out.print("Has jugat un total de " + num_partides);
 		if (num_partides == 1)
 			System.out.println(" partida");
