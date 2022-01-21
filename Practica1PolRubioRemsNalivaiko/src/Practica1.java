@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Practica1 {
 
-	private static void generecio(boolean joc[][], boolean aux[][]) {
+	private static void generecio(boolean joc[][], boolean aux[][], int[] vius) {
 		int n=0;
 	
 		for (int x = 0; x < joc.length; x++) {
@@ -64,7 +64,7 @@ public class Practica1 {
 			System.out.println("***********");
 
 
-			generacio();
+			generacio(joc, aux vius);
 			
 			
 			joc = aux;
