@@ -58,10 +58,11 @@ public class Practica1 {
 		int[] vius = new int[g];
 
 		
-		
-		boolean partida =true;
+		int num_partides = 0;
+		boolean partida = true;
 		
 		while(partida) {
+			n++;
 			int current_gen=0;
 			boolean seguir=true;
 			while (current_gen<g && seguir) {
@@ -73,6 +74,11 @@ public class Practica1 {
 			}
 			textFinal(vius);		
 		}
+		System.out.print("Has jugat un total de " + num_partides);
+		if (num_partides == 1)
+			System.out.println(" partida");
+		else
+			System.out.println(" partides");
 
 	}
 
