@@ -58,10 +58,11 @@ public class Practica1 {
 		int[] vius = new int[g];
 
 		
-		
-		boolean partida =true;
+		int num_partides = 0;
+		boolean partida = true;
 		
 		while(partida) {
+			n++;
 			int current_gen=0;
 			boolean seguir=true;
 			while (current_gen<g && seguir) {
@@ -82,6 +83,11 @@ public class Practica1 {
 			seguir=(triat=='y');
 			if (seguir)  num_partides+=1;
 		}
+		System.out.print("Has jugat un total de " + num_partides);
+		if (num_partides == 1)
+			System.out.println(" partida");
+		else
+			System.out.println(" partides");
 
 	}
 
@@ -106,9 +112,14 @@ public class Practica1 {
 		if (f)
 			System.out.println("Hi ha mes d'una evolucio amb la mateixa vida ("
 								+ v + "organismes. Una d'elles es la" + (n+1));
-		else
-			System.out.println("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
-								+ " amb un total de " + v + " organismes");
+		else {
+			System.out.print("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
+								+ " amb un total de " + v);
+			if (v == 1)
+				System.out.println(" organisme");
+			else
+				System.out.println(" organismes");
+		}
 	}
 
 	private static int intSense(String pregunta, int m, int M) {
