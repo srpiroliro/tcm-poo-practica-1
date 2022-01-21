@@ -5,6 +5,8 @@ import java.util.Random;
 public class Practica1 {
 
 	private static void generecio(boolean joc[][], boolean aux[][]) {
+		int n=0;
+	
 		for (int x = 0; x < joc.length; x++) {
 			for (int y = 0; y < joc[0].length; y++) {
 				n = numVeins(joc,x,y);
@@ -61,30 +63,8 @@ public class Practica1 {
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
 
-<<<<<<< HEAD
-			for (int x = 0; x < joc.length; x++) {
-				for (int y = 0; y < joc[0].length; y++) {
-					n = numVeins(joc, d, x, y);
-					System.out.print(n + " ");
 
-					if (!joc[x][y] && n == 3)
-						aux[x][y] = true;
-					else if (joc[x][y] && (n < 2 || n > 3))
-						aux[x][y] = false;
-					else
-						aux[x][y] = joc[x][y];
-					if (aux[x][y])
-						v++;
-				}
-				System.out.println();
-			}
-			vius[i] = v;
-			if(v==0 || !iguals(joc, aux)) {i = g;}
-			v = 0;
-			System.out.println();
-=======
 			generacio();
->>>>>>> 9eff29d813561fcfc2d1c3247c56c4c9ea379486
 			
 			
 			joc = aux;
