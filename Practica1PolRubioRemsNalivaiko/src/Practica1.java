@@ -15,7 +15,8 @@ public class Practica1 {
 		boolean f = false, e = true;
 		Random random = new Random();
 
-		int d = intSense("Indica de quines dimesions vols el taulell", 5, 15);
+		int d = intSense("Indica l'amplada del taulell", 5, 15);
+		int h = intSense("Indica l'alçada del taulell", 5, 15);
 
 		boolean[][] joc = totFalse(d);
 		
@@ -108,11 +109,11 @@ boolean[][] aux = totFalse(d);
 		return r;
 	}
 
-	private static boolean[][] totFalse(int d) {
-		boolean[][] a = new boolean[d][d];
+	private static boolean[][] totFalse(int d, int h) {
+		boolean[][] a = new boolean[d][h];
 
 		for (int i = 0; i < d; i++) {
-			for (int j = 0; j < d; j++)
+			for (int j = 0; j < h; j++)
 				a[i][j] = false;
 		}
 		return a;
