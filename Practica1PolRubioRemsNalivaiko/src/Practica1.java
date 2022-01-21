@@ -4,12 +4,8 @@ import java.util.Random;
 
 public class Practica1 {
 
-<<<<<<< HEAD
-	private static void generecio(boolean joc[][], boolean aux[][], int[] vius) {
-=======
-	private static void generacio(boolean joc[][], boolean aux[][]) {
->>>>>>> 4125fa9e8fed5424465244171397e56aea5617aa
-		int n=0;
+	private static boolean generacio(boolean joc[][], boolean aux[][], int[] vius, int i) {
+		int n, v = 0, j = 0;
 	
 		for (int x = 0; x < joc.length; x++) {
 			for (int y = 0; y < joc[0].length; y++) {
@@ -24,17 +20,18 @@ public class Practica1 {
 					aux[x][y] = joc[x][y];
 				if (aux[x][y])
 					v++;
+				if(joc[x][y] == aux[x][y])
+					j++;
 			}
 			System.out.println();
 		}
 		vius[i] = v;
-		if(v==0) {e = false; i = g;}
+		if(v==0 || joc.length*joc[0].length == j) {return true;}
 		v = 0;
-		System.out.println();
+		return false;
 	}
 	
 	public static void main(String[] args) {
-		int n, v = 0;
 		Random random = new Random();
 
 		int d = intSense("Indica l'amplada del taulell", 5, 15);
@@ -62,33 +59,14 @@ public class Practica1 {
 		int[] vius = new int[g];
 
 		for (int i = 0; i < g; i++) {
-			
-
 			boolean[][] aux = totFalse(d, h);
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
 
-
-<<<<<<< HEAD
-			generacio(joc, aux vius);
-=======
-			generacio(joc, aux);
->>>>>>> 4125fa9e8fed5424465244171397e56aea5617aa
-			
-			
-			System.out.println(mapa(joc));
-			if (joc==aux) {
-				// parar joc, 2gens seguides iguals.
-			} else {
-				joc = aux;
-				aux=totFalse(d,h);
-			}
-			
+			if(generacio(joc, aux, vius, i)) {i = g;}
 		}
 
 		textFinal(vius);
-		
-		
 	}
 
 	private static void textFinal(int[] vius) {
