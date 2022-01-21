@@ -28,11 +28,9 @@ public class Practica1 {
 //			System.out.println();
 		}
 		vius[i] = v;
-		System.out.println(j);
 		if(v==0 || joc.length*joc[0].length == j) {return(totFalse(joc.length, joc[0].length));}
 		v = 0;
 		
-		System.out.println(mapa(joc));
 		
 		return aux;
 	}
