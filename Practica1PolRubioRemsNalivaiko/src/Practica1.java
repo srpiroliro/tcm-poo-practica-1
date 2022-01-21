@@ -9,7 +9,7 @@ public class Practica1 {
 	private static void generecio(boolean joc[][], boolean aux[][]) {
 		for (int x = 0; x < joc.length; x++) {
 			for (int y = 0; y < joc[0].length; y++) {
-				n = numVeins(joc, {joc.length, joc[0].length}, {x,y});
+				n = numVeins(joc,x,y);
 				System.out.print(n + " ");{
 
 				if (!joc[x][y] && n == 3)
@@ -35,7 +35,7 @@ public class Practica1 {
 		Random random = new Random();
 
 		int d = intSense("Indica l'amplada del taulell", 5, 15);
-		int h = intSense("Indica l'alçada del taulell", 5, 15);
+		int h = intSense("Indica l'alï¿½ada del taulell", 5, 15);
 
 		boolean[][] joc = totFalse(d, h);
 		
@@ -59,12 +59,8 @@ public class Practica1 {
 
 		for (int i = 0; i < g; i++) {
 			
-<<<<<<< HEAD
-			boolean[][] aux = totFalse(d);
-=======
+
 			boolean[][] aux = totFalse(d, h);
->>>>>>> 361787776e473bd90158d2fd0bcf96838fad9190
-			
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
 
@@ -143,12 +139,12 @@ public class Practica1 {
 		return m;
 	}
 
-	private static int numVeins(boolean[][] joc, int d, int x, int y) {
+	private static int numVeins(boolean[][] joc, int x, int y) {
 		int n = 0;
 
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
-				if (x + i < 0 || x + i > d - 1 || y + j < 0 || y + j > d - 1)
+				if (x + i < 0 || x + i >= joc.length || y + j < 0 || y + j >= joc[0].length)
 					;
 				else if (joc[x + i][y + j])
 					n++;
