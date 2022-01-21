@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Practica1 {
 
-	private static void generacio(boolean joc[][], boolean aux[][]) {
-		int n=0;
+	private static boolean generacio(boolean joc[][], boolean aux[][], int[] vius, int i) {
+		int n, v = 0, j = 0;
 	
 		for (int x = 0; x < joc.length; x++) {
 			for (int y = 0; y < joc[0].length; y++) {
@@ -20,17 +20,18 @@ public class Practica1 {
 					aux[x][y] = joc[x][y];
 				if (aux[x][y])
 					v++;
+				if(joc[x][y] == aux[x][y])
+					j++;
 			}
 			System.out.println();
 		}
 		vius[i] = v;
-		if(v==0) {e = false; i = g;}
+		if(v==0 || joc.length*joc[0].length == j) {return true;}
 		v = 0;
-		System.out.println();
+		return false;
 	}
 	
 	public static void main(String[] args) {
-		int n, v = 0;
 		Random random = new Random();
 
 		int d = intSense("Indica l'amplada del taulell", 5, 15);
@@ -56,6 +57,8 @@ public class Practica1 {
 		int g = intSense("Indica quantes generacions vols", 1, 10);
 		int[] vius = new int[g];
 
+		
+		
 		boolean partida =true;
 		
 		while(partida) {
@@ -67,13 +70,13 @@ public class Practica1 {
 				System.out.println("***********");
 	
 	
-				generacio(joc, aux);	
+				if(generacio(joc, aux, vius, i)) {i = g;}
 			}
 	
 			textFinal(vius);
 		}
 		
-		
+
 	}
 
 	private static void textFinal(int[] vius) {
