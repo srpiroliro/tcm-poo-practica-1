@@ -2,39 +2,22 @@
 import Keyboard.*;
 import java.util.Random;
 
+
+
 public class Practica1 {
 
-	private static void generecio(boolean joc[][], boolean aux[][]) {
-		for (int x = 0; x < joc.length; x++) {
-			for (int y = 0; y < joc[0].length; y++) {
-				n = numVeins(joc,x,y);
-				System.out.print(n + " ");{
-
-				if (!joc[x][y] && n == 3)
-					aux[x][y] = true;
-				else if (joc[x][y] && (n < 2 || n > 3))
-					aux[x][y] = false;
-				else
-					aux[x][y] = joc[x][y];
-				if (aux[x][y])
-					v++;
-			}
-			System.out.println();
-		}
-		vius[i] = v;
-		if(v==0) {e = false; i = g;}
-		v = 0;
-		System.out.println();
+	private static void generecio() {
+		
 	}
 	
 	public static void main(String[] args) {
 		int j, k, n, v = 0;
+		boolean f = false, e = true;
 		Random random = new Random();
 
-		int d = intSense("Indica l'amplada del taulell", 5, 15);
-		int h = intSense("Indica l'al�ada del taulell", 5, 15);
+		int d = intSense("Indica de quines dimesions vols el taulell", 5, 15);
 
-		boolean[][] joc = totFalse(d, h);
+		boolean[][] joc = totFalse(d);
 		
 
 		int m = intSense("Indica quants organismes vius hi vols posar", 1, d * d);
@@ -56,12 +39,11 @@ public class Practica1 {
 
 		for (int i = 0; i < g; i++) {
 			
-
-			boolean[][] aux = totFalse(d, h);
+boolean[][] aux = totFalse(d);
+			
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
 
-<<<<<<< HEAD
 			for (int x = 0; x < joc.length; x++) {
 				for (int y = 0; y < joc[0].length; y++) {
 					n = numVeins(joc, d, x, y);
@@ -79,45 +61,42 @@ public class Practica1 {
 				System.out.println();
 			}
 			vius[i] = v;
-			if(v==0 || !iguals(joc, aux)) {i = g;}
+			if(v==0) {e = false; i = g;}
 			v = 0;
 			System.out.println();
-=======
-			generacio();
->>>>>>> 9eff29d813561fcfc2d1c3247c56c4c9ea379486
 			
 			
 			joc = aux;
 			System.out.println(mapa(joc));
 		}
 
-		textFinal(vius);
-	}
-
-	private static void textFinal(int[] vius) {
-		int v = 0, n = 0;
-		boolean f = false;
-		for (int i = 0; i < vius.length; i++) {
-			System.out.print("Evolucio: " + (i+1) + "--> hi ha " + vius[i]);
-			if (vius[i] == 1)
-				System.out.println(" organisme");
+		if (e) {
+			v = 0;
+			n = 0;
+			for (int i = 0; i < g; i++) {
+				System.out.print("Evolucio: " + (i+1) + "--> hi ha " + vius[i]);
+				if (vius[i] == 1)
+					System.out.println(" organisme");
+				else
+					System.out.println(" organismes");
+	
+				if (vius[i] > v) {
+					v = vius[i];
+					n = i;
+					f = false;
+				} else if (vius[i] == v)
+					f = true;
+			}
+			System.out.println();
+			if (f)
+				System.out.println("Hi ha mes d'una evolucio amb la mateixa vida ("
+									+ v + "organismes. Una d'elles �s la" + (n+1));
 			else
-				System.out.println(" organismes");
-
-			if (vius[i] > v) {
-				v = vius[i];
-				n = i;
-				f = false;
-			} else if (vius[i] == v)
-				f = true;
+				System.out.println("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
+									+ " amb un total de " + v + " organismes");
 		}
-		System.out.println();
-		if (f)
-			System.out.println("Hi ha mes d'una evolucio amb la mateixa vida ("
-								+ v + "organismes. Una d'elles �s la" + (n+1));
-		else
-			System.out.println("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
-								+ " amb un total de " + v + " organismes");
+		else System.out.println("La vida s'ha acabat");
+
 	}
 
 	private static int intSense(String pregunta, int m, int M) {
@@ -129,11 +108,11 @@ public class Practica1 {
 		return r;
 	}
 
-	private static boolean[][] totFalse(int d, int h) {
-		boolean[][] a = new boolean[d][h];
+	private static boolean[][] totFalse(int d) {
+		boolean[][] a = new boolean[d][d];
 
 		for (int i = 0; i < d; i++) {
-			for (int j = 0; j < h; j++)
+			for (int j = 0; j < d; j++)
 				a[i][j] = false;
 		}
 		return a;
@@ -159,12 +138,12 @@ public class Practica1 {
 		return m;
 	}
 
-	private static int numVeins(boolean[][] joc, int x, int y) {
+	private static int numVeins(boolean[][] joc, int d, int x, int y) {
 		int n = 0;
 
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
-				if (x + i < 0 || x + i >= joc.length || y + j < 0 || y + j >= joc[0].length)
+				if (x + i < 0 || x + i > d - 1 || y + j < 0 || y + j > d - 1)
 					;
 				else if (joc[x + i][y + j])
 					n++;
@@ -176,5 +155,4 @@ public class Practica1 {
 
 		return n;
 	}
-	
 }
