@@ -69,13 +69,10 @@ public class Practica1 {
 				System.out.println("Evolucio: " + (current_gen + 1));
 				System.out.println("***********");
 	
-	
-				if(generacio(joc, aux, vius, i)) {i = g;}
+				seguir = generacio(joc, aux, vius, current_gen);
 			}
-	
-			textFinal(vius);
+			textFinal(vius);		
 		}
-		
 
 	}
 
