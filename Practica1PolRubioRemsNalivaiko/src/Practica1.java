@@ -34,9 +34,10 @@ public class Practica1 {
 		boolean f = false, e = true;
 		Random random = new Random();
 
-		int d = intSense("Indica de quines dimesions vols el taulell", 5, 15);
+		int d = intSense("Indica l'amplada del taulell", 5, 15);
+		int h = intSense("Indica l'alçada del taulell", 5, 15);
 
-		boolean[][] joc = totFalse(d);
+		boolean[][] joc = totFalse(d, h);
 		
 
 		int m = intSense("Indica quants organismes vius hi vols posar", 1, d * d);
@@ -58,7 +59,11 @@ public class Practica1 {
 
 		for (int i = 0; i < g; i++) {
 			
+<<<<<<< HEAD
 			boolean[][] aux = totFalse(d);
+=======
+			boolean[][] aux = totFalse(d, h);
+>>>>>>> 361787776e473bd90158d2fd0bcf96838fad9190
 			
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
@@ -108,11 +113,11 @@ public class Practica1 {
 		return r;
 	}
 
-	private static boolean[][] totFalse(int d) {
-		boolean[][] a = new boolean[d][d];
+	private static boolean[][] totFalse(int d, int h) {
+		boolean[][] a = new boolean[d][h];
 
 		for (int i = 0; i < d; i++) {
-			for (int j = 0; j < d; j++)
+			for (int j = 0; j < h; j++)
 				a[i][j] = false;
 		}
 		return a;
