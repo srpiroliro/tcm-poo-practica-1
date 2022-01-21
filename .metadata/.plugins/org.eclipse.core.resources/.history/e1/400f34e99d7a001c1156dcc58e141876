@@ -2,14 +2,8 @@
 import Keyboard.*;
 import java.util.Random;
 
-
-
 public class Practica1 {
 
-	private static void generecio() {
-		
-	}
-	
 	public static void main(String[] args) {
 		int j, k, n, v = 0;
 		boolean f = false, e = true;
@@ -38,14 +32,13 @@ public class Practica1 {
 		int[] vius = new int[g];
 
 		for (int i = 0; i < g; i++) {
-			
-boolean[][] aux = totFalse(d);
+			boolean[][] aux = totFalse(d);
 			
 			System.out.println("Evolucio: " + (i + 1));
 			System.out.println("***********");
 
-			for (int x = 0; x < joc.length; x++) {
-				for (int y = 0; y < joc[0].length; y++) {
+			for (int x = 0; x < d; x++) {
+				for (int y = 0; y < d; y++) {
 					n = numVeins(joc, d, x, y);
 					System.out.print(n + " ");
 
@@ -64,8 +57,6 @@ boolean[][] aux = totFalse(d);
 			if(v==0) {e = false; i = g;}
 			v = 0;
 			System.out.println();
-			
-			
 			joc = aux;
 			System.out.println(mapa(joc));
 		}
@@ -119,7 +110,6 @@ boolean[][] aux = totFalse(d);
 	}
 
 	private static String mapa(boolean[][] mapa) {
-		// visualitza matriu
 		String m = "";
 		for (int i = 0; i < mapa.length; i++) {
 			for (int j = 0; j < mapa[0].length; j++) {
