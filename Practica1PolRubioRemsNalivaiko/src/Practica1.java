@@ -71,7 +71,16 @@ public class Practica1 {
 	
 				seguir = generacio(joc, aux, vius, current_gen);
 			}
-			textFinal(vius);		
+			textFinal(vius);
+			
+			char triat=' ';
+			System.out.print("Voleu seguir jungant? [y/n]: ");
+			do {
+				triat=Keyboard.readChar();
+			} while (triat!='y'||triat!='n');
+			
+			seguir=(triat=='y');
+			if (seguir)  num_partides+=1;
 		}
 
 	}
