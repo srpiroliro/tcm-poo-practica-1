@@ -2,8 +2,6 @@
 import Keyboard.*;
 import java.util.Random;
 
-
-
 public class Practica1 {
 
 	private static void generecio() {
@@ -12,11 +10,10 @@ public class Practica1 {
 	
 	public static void main(String[] args) {
 		int j, k, n, v = 0;
-		boolean f = false, e = true;
 		Random random = new Random();
 
 		int d = intSense("Indica l'amplada del taulell", 5, 15);
-		int h = intSense("Indica l'alçada del taulell", 5, 15);
+		int h = intSense("Indica l'alï¿½ada del taulell", 5, 15);
 
 		boolean[][] joc = totFalse(d, h);
 		
@@ -62,7 +59,7 @@ public class Practica1 {
 				System.out.println();
 			}
 			vius[i] = v;
-			if(v==0) {e = false; i = g;}
+			if(v==0 || !iguals(joc, aux)) {i = g;}
 			v = 0;
 			System.out.println();
 			
@@ -71,33 +68,33 @@ public class Practica1 {
 			System.out.println(mapa(joc));
 		}
 
-		if (e) {
-			v = 0;
-			n = 0;
-			for (int i = 0; i < g; i++) {
-				System.out.print("Evolucio: " + (i+1) + "--> hi ha " + vius[i]);
-				if (vius[i] == 1)
-					System.out.println(" organisme");
-				else
-					System.out.println(" organismes");
-	
-				if (vius[i] > v) {
-					v = vius[i];
-					n = i;
-					f = false;
-				} else if (vius[i] == v)
-					f = true;
-			}
-			System.out.println();
-			if (f)
-				System.out.println("Hi ha mes d'una evolucio amb la mateixa vida ("
-									+ v + "organismes. Una d'elles ï¿½s la" + (n+1));
-			else
-				System.out.println("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
-									+ " amb un total de " + v + " organismes");
-		}
-		else System.out.println("La vida s'ha acabat");
+		textFinal(vius);
+	}
 
+	private static void textFinal(int[] vius) {
+		int v = 0, n = 0;
+		boolean f = false;
+		for (int i = 0; i < vius.length; i++) {
+			System.out.print("Evolucio: " + (i+1) + "--> hi ha " + vius[i]);
+			if (vius[i] == 1)
+				System.out.println(" organisme");
+			else
+				System.out.println(" organismes");
+
+			if (vius[i] > v) {
+				v = vius[i];
+				n = i;
+				f = false;
+			} else if (vius[i] == v)
+				f = true;
+		}
+		System.out.println();
+		if (f)
+			System.out.println("Hi ha mes d'una evolucio amb la mateixa vida ("
+								+ v + "organismes. Una d'elles ï¿½s la" + (n+1));
+		else
+			System.out.println("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
+								+ " amb un total de " + v + " organismes");
 	}
 
 	private static int intSense(String pregunta, int m, int M) {
@@ -156,4 +153,5 @@ public class Practica1 {
 
 		return n;
 	}
+	
 }
