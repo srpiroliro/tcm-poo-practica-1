@@ -1,3 +1,4 @@
+package Practica1Sessio1;
 // test test
 import Keyboard.*;
 import java.util.Random;
@@ -10,7 +11,6 @@ public class Practica1 {
 		for (int x = 0; x < joc.length; x++) {
 			for (int y = 0; y < joc[0].length; y++) {
 				n = numVeins(joc,x,y);
-//				System.out.print(n + " ");
 
 				if (!joc[x][y] && n == 3)
 					aux[x][y] = true;
@@ -25,7 +25,6 @@ public class Practica1 {
 				if(joc[x][y] == aux[x][y])
 					j++;
 			}
-//			System.out.println();
 		}
 		vius[i] = v;
 		if(v==0 || joc.length*joc[0].length == j) {return(totFalse(joc.length, joc[0].length));}
