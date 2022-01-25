@@ -1,5 +1,7 @@
 package Practica1Sessio1;
-// test test
+
+
+
 import Keyboard.*;
 import java.util.Random;
 
@@ -183,15 +185,12 @@ public class Practica1 {
 
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
-				if (x + i < 0 || x + i >= joc.length || y + j < 0 || y + j >= joc[0].length)
-					;
-				else if (joc[x + i][y + j])
-					n++;
+				if (x + i < 0 || x + i >= joc.length || y + j < 0 || y + j >= joc[0].length);
+				else if (joc[x + i][y + j]) n++;
 			}
 		}
 
-		if (joc[x][y])
-			n -= 1;
+		if (joc[x][y]) n -= 1;
 
 		return n;
 	}

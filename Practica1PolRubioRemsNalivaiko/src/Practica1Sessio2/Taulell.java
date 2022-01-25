@@ -65,7 +65,6 @@ public class Taulell {
 		// ...
 		// this.organismes_vius++
 		
-		
 		boolean[][] aux=new boolean[FILES][COLUMNES];
 		int igualtats=0;
 		
@@ -73,18 +72,17 @@ public class Taulell {
 			for (int x=0; x<taulell_joc[0].length; x++) {
 				int num_veines=quantesVeines(y,x);
 				
-				
 				if (!taulell_joc[x][y] && num_veines==3)
 					aux[x][y]=true;
 				else if (num_veines==2)
 					aux[x][y]=taulell_joc[x][y];
 				// per defecte les demes caselles son false i no cal "matar" a cap.
 					
-				
 				if(taulell_joc[x][y]==aux[x][y])
 					igualtats++;
 			}
 		}
+		copiar(aux);
 		
 		return( igualtats!=FILES*COLUMNES );
 	}
