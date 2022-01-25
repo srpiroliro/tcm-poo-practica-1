@@ -16,7 +16,7 @@ public class Taulell {
 	}
 	
 	public void treureVida() {
-		this.organismes_vius=0;
+		organismes_vius=0;
 		
 		for (int y=0; y<taulell_joc.length; y++) {
 			for (int x=0; x<taulell_joc[y].length; x++) { // es podria canviar [y] per [0].
@@ -107,9 +107,6 @@ public class Taulell {
 	}
 	
 	private void copiar(boolean[][] origen) {
-		// ???: copiar origen a taulell_joc o taulell_joc a origen?
-		
-		
 		// origen.length==taulell_joc.length && origen[y].length==taulell_joc[y].length ???
 		// en cas contrari, cal fer una comprovacio de si tenen la mateixa .length
 		
