@@ -39,7 +39,7 @@ public class Practica1 {
 	public static void main(String[] args) {
 		Random random = new Random();
 
-		int d = intSense("Indica l'alcada del taulell", 5, 15);
+		int d = intSense("Indica l'alçada del taulell", 5, 15);
 		int h = intSense("Indica l'amplada del taulell", 5, 15);
 		int m = intSense("Indica quants organismes vius hi vols posar", 1, d*h);
 

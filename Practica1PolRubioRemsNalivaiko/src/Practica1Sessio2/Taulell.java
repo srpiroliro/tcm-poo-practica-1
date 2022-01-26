@@ -10,9 +10,9 @@ public class Taulell {
 	int organismes_vius;
 	
 	public Taulell(int n, int m) {
-		COLUMNES=n;
 		FILES=m;
-		taulell_joc=new boolean[m][n];
+		COLUMNES=n;
+		taulell_joc=new boolean[FILES][COLUMNES];
 	}
 	
 	public void treureVida() {
@@ -26,37 +26,32 @@ public class Taulell {
 	}
 	
 	public void posarVida(int N) {
-		// Al ser valor de N sempre correcte, sempre hi haura lloc per N vides i per tant no cal comprovacio.
+		System.out.println("\nGenerant vides...\n\nFila - Columna");
 		for(int i=0; i<N; i++) {
 			int x,y;
 			do {
 				Random rand=new Random();
 				y=rand.nextInt(FILES);
-				x=rand.nextInt(COLUMNES);  // es podria canviar [y] per [0].
+				x=rand.nextInt(COLUMNES);
 			} while (taulell_joc[y][x]);
 			
 			taulell_joc[y][x]=true;
+			System.out.println("("+y+", "+x+")");
 		}
+		System.out.println("");
 	}
 	
 	public void mostraTaulell() {
 		String m="";
 		for (int y = 0; y<taulell_joc.length; y++) {
 			for (int x = 0; x<taulell_joc[y].length; x++) {
-				/*
-				* Aquests caracters potser han de ser modificats per tal de tenir una correcta
-				* impressio per consola si es canvia d'ordinador: - viu: 0x25A0 - mort: 0x25A1
-				*/
-				if (taulell_joc[y][x])
-					m += (char) 0x25A0;
-				else
-					m += (char) 0x25A1;
-				m += " ";
+				if (taulell_joc[y][x]) m+="X"; //"■";
+				else m+="-"; //"□";
+				m+=" ";
 			}
-			m += "\n";
+			m+="\n";
 		}
-		
-		System.out.println(m);
+		System.out.print(m);
 	}
 	
 	public boolean ferGeneracio() {
@@ -67,17 +62,15 @@ public class Taulell {
 		
 		for (int y=0; y<taulell_joc.length; y++) {
 			for (int x=0; x<taulell_joc[0].length; x++) {
-				int num_veines=quantesVeines(y,x);
-				
-				if (!taulell_joc[x][y] && num_veines==3)
-					aux[x][y]=true;
+				int num_veines=quantesVeines(y,x);			
+				if (num_veines==3)
+					aux[y][x]=true;
 				else if (num_veines==2)
-					aux[x][y]=taulell_joc[x][y];
+					aux[y][x]=taulell_joc[y][x];
 				// per defecte les demes caselles son false i no cal "matar" a cap.
-				
-				if (aux[x][y]) organismes_vius++;
-				if(taulell_joc[x][y]==aux[x][y])
-					igualtats++;
+
+				if(taulell_joc[y][x]==aux[y][x]) igualtats++;
+				if(aux[y][x])  organismes_vius++;
 			}
 		}
 		copiar(aux);
@@ -87,18 +80,17 @@ public class Taulell {
 	
 	private int quantesVeines(int fil, int col) {
 		int veines=0;
-		for (int y=fil-1; y<=fil+1; y++) {
-			if (y>=0 && y<taulell_joc.length) {
-				for (int x=col-1; x<=col+1; x++) {
-					if (x>=0 && x<taulell_joc[y].length) {
-						if (taulell_joc[y][x] && x!=col && y!=fil) {
-							veines++;
-						}
-					} 
+		
+		for(int y=fil-1; y<(fil+2); y++) {
+			if(y>=0 && y<taulell_joc.length) {
+				for(int x=col-1; x<(col+2); x++) {
+					if(x>=0 && x<taulell_joc[0].length) {
+						if (taulell_joc[y][x] && !(x==col && y==fil)) veines++;
+					}
 				}
 			}
 		}
-		
+
 		return veines;
 	}
 	
