@@ -39,16 +39,8 @@ public class Practica1 {
 	public static void main(String[] args) {
 		Random random = new Random();
 
-<<<<<<< HEAD:Practica1PolRubioRemsNalivaiko/src/Practica1.java
 		int d = intSense("Indica l'alçada del taulell", 5, 15);
 		int h = intSense("Indica l'amplada del taulell", 5, 15);
-		boolean[][] joc = totFalse(d, h);
-		
-
-=======
-		int d = intSense("Indica l'alcada del taulell", 5, 15);
-		int h = intSense("Indica l'amplada del taulell", 5, 15);
->>>>>>> 6cc3e136c1b126877d19dd6f29d7425b64488265:Practica1PolRubioRemsNalivaiko/src/Practica1Sessio1/Practica1.java
 		int m = intSense("Indica quants organismes vius hi vols posar", 1, d*h);
 
 		

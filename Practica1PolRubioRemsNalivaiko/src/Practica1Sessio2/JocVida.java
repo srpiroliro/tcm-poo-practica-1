@@ -5,6 +5,38 @@ import Keyboard.*;
 
 public class JocVida {
 	
+	//resum
+	private static void textFinal(int[] vius) {
+		int v = 0, n = 0;
+		boolean f = false;
+		for (int i = 0; i < vius.length; i++) {
+			System.out.print("Evolucio: " + (i+1) + "--> hi ha " + vius[i]);
+			if (vius[i] == 1)
+				System.out.println(" organisme");
+			else
+				System.out.println(" organismes");
+
+			if (vius[i] > v) {
+				v = vius[i];
+				n = i;
+				f = false;
+			} else if (vius[i] == v)
+				f = true;
+		}
+		System.out.println();
+		if (f)
+			System.out.println("Hi ha mes d'una evolucio amb la mateixa vida ("
+								+ v + "organismes. Una d'elles es la" + (n+1));
+		else {
+			System.out.print("L'evolucio " + (n+1) + " es la que mes vida a tingut,"
+								+ " amb un total de " + v);
+			if (v == 1)
+				System.out.println(" organisme");
+			else
+				System.out.println(" organismes");
+		}
+	}
+	
 	// legal?
 	private static int demanarIntEntre(int min, int max, String name) {
 		int triat;
@@ -78,23 +110,15 @@ public class JocVida {
 				current_gen++;
 			}
 			
+			textFinal(resum_vides);
+			
 			char[] whitelist={'y','n','Y','N'};
 			char seguir=demanarChar(whitelist,"Voleu seguir?");
-			/*
-			En cas de ser demanarChar() massa, substituir per aixo.
-			
-			do {
-				System.out.println("Voleu fer-ne un altre? [y/n]: ");
-				seguir=Keyboard.readChar();
-			} while ( !(seguir=='y' || seguir=='Y' || seguir=='n' || seguir=='N') );
-			*/
 			
 			if(seguir=='n' || seguir=='N') 
 				partida=false;
 			else 
 				cnt_partides++;
 		}
-		
-		// resum
 	}
 }
