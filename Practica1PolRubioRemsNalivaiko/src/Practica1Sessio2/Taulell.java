@@ -60,13 +60,10 @@ public class Taulell {
 	}
 	
 	public boolean ferGeneracio() {
-		// ???: num. de vides x generacio? 
-		// this.organismes_vius=0
-		// ...
-		// this.organismes_vius++
-		
 		boolean[][] aux=new boolean[FILES][COLUMNES];
 		int igualtats=0;
+		
+		organismes_vius=0;
 		
 		for (int y=0; y<taulell_joc.length; y++) {
 			for (int x=0; x<taulell_joc[0].length; x++) {
@@ -77,7 +74,8 @@ public class Taulell {
 				else if (num_veines==2)
 					aux[x][y]=taulell_joc[x][y];
 				// per defecte les demes caselles son false i no cal "matar" a cap.
-					
+				
+				if (aux[x][y]) organismes_vius++;
 				if(taulell_joc[x][y]==aux[x][y])
 					igualtats++;
 			}

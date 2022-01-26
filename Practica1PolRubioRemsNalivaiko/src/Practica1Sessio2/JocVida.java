@@ -89,10 +89,8 @@ public class JocVida {
 			} while ( !(seguir=='y' || seguir=='Y' || seguir=='n' || seguir=='N') );
 			*/
 			
-			if(seguir=='n' || seguir=='N') 
-				partida=false;
-			else 
-				cnt_partides++;
+			if(seguir=='n' || seguir=='N') partida=false;
+			else cnt_partides++;
 		}
 		
 		// resum
