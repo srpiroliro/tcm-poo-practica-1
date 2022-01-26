@@ -1,7 +1,5 @@
 package Practica1Sessio2;
-
 import Keyboard.*;
-
 
 public class JocVida {
 	
@@ -71,8 +69,6 @@ public class JocVida {
 		int files, columnes, vides_originals, cnt_partides, generacions_totals, current_gen;
 		boolean partida,game_over;
 		
-		System.out.println("123fds");
-		
 		files=demanarIntEntre(1,25, "Files");
 		columnes=demanarIntEntre(1,25, "Columnes");
 		vides_originals=demanarIntEntre(1,files*columnes,"Vides");
@@ -100,7 +96,7 @@ public class JocVida {
 				game_over=!(t.ferGeneracio() && t.getOrganismesVius()>0);
 				int num_vides=t.getOrganismesVius();
 				
-				System.out.println("Genració "+ (current_gen+1) + ":");
+				System.out.println("Genracio "+ (current_gen+1) + ":");
 				t.mostraTaulell();
 				System.out.println("");
 								

@@ -19,7 +19,7 @@ public class Taulell {
 		organismes_vius=0;
 		
 		for (int y=0; y<taulell_joc.length; y++) {
-			for (int x=0; x<taulell_joc[y].length; x++) { // es podria canviar [y] per [0].
+			for (int x=0; x<taulell_joc[y].length; x++) {
 				taulell_joc[y][x]=false;
 			}
 		}
@@ -45,8 +45,8 @@ public class Taulell {
 		String m="";
 		for (int y = 0; y<taulell_joc.length; y++) {
 			for (int x = 0; x<taulell_joc[y].length; x++) {
-				if (taulell_joc[y][x]) m+="X"; //"■";
-				else m+="-"; //"□";
+				if (taulell_joc[y][x]) m+="■";
+				else m+="□";
 				m+=" ";
 			}
 			m+="\n";
@@ -94,10 +94,7 @@ public class Taulell {
 		return veines;
 	}
 	
-	private void copiar(boolean[][] origen) {
-		// origen.length==taulell_joc.length && origen[y].length==taulell_joc[y].length ???
-		// en cas contrari, cal fer una comprovacio de si tenen la mateixa .length
-		
+	private void copiar(boolean[][] origen) {		
 		for (int y = 0; y<origen.length; y++) {
 			for (int x = 0; x<origen[y].length; x++) {
 				taulell_joc[y][x]=origen[y][x];
