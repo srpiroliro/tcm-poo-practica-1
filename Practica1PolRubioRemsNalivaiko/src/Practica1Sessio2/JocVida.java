@@ -98,16 +98,20 @@ public class JocVida {
 			game_over=false;
 			t.treureVida();
 			t.posarVida(vides_originals);
+			t.mostraTaulell();
+			System.out.println("fds");
 			
 			generacions_totals=demanarIntEntre(1,100,"Generacions");
 			int[] resum_vides=new int[generacions_totals];
 			
 			while(current_gen<generacions_totals && !game_over) {
 				
-				// ...
+				game_over = t.ferGeneracio();
 				
 				resum_vides[current_gen]=t.getOrganismesVius();
 				current_gen++;
+				System.out.println("Genració "+ current_gen+1 + ":");
+				t.mostraTaulell();
 			}
 			
 			textFinal(resum_vides);
@@ -120,5 +124,12 @@ public class JocVida {
 			else 
 				cnt_partides++;
 		}
+		
+		System.out.print("Has jugat un total de " + cnt_partides);
+		if (cnt_partides == 1)
+			System.out.println(" partida");
+		else
+			System.out.println(" partides");
+		
 	}
 }

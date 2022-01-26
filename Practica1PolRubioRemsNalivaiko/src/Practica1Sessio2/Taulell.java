@@ -10,9 +10,9 @@ public class Taulell {
 	int organismes_vius;
 	
 	public Taulell(int n, int m) {
-		COLUMNES=n;
 		FILES=m;
-		taulell_joc=new boolean[m][n];
+		COLUMNES=n;
+		taulell_joc=new boolean[FILES][COLUMNES];
 	}
 	
 	public void treureVida() {
@@ -32,10 +32,12 @@ public class Taulell {
 			do {
 				Random rand=new Random();
 				y=rand.nextInt(FILES);
-				x=rand.nextInt(COLUMNES);  // es podria canviar [y] per [0].
+				x=rand.nextInt(COLUMNES);
 			} while (taulell_joc[y][x]);
 			
 			taulell_joc[y][x]=true;
+			
+			System.out.println("Y: " +y+ "  --  X: " +x);
 		}
 	}
 	
@@ -60,10 +62,7 @@ public class Taulell {
 	}
 	
 	public boolean ferGeneracio() {
-		// ???: num. de vides x generacio? 
-		// this.organismes_vius=0
-		// ...
-		// this.organismes_vius++
+		organismes_vius=0;
 		
 		boolean[][] aux=new boolean[FILES][COLUMNES];
 		int igualtats=0;
@@ -72,19 +71,22 @@ public class Taulell {
 			for (int x=0; x<taulell_joc[0].length; x++) {
 				int num_veines=quantesVeines(y,x);
 				
-				if (!taulell_joc[x][y] && num_veines==3)
-					aux[x][y]=true;
+				if (!taulell_joc[y][x] && num_veines==3)
+					aux[y][x]=true;
 				else if (num_veines==2)
-					aux[x][y]=taulell_joc[x][y];
+					aux[y][x]=taulell_joc[y][x];
 				// per defecte les demes caselles son false i no cal "matar" a cap.
 					
-				if(taulell_joc[x][y]==aux[x][y])
+				if(taulell_joc[y][x]==aux[y][x])
 					igualtats++;
+
+				if(aux[y][x]) 
+					organismes_vius++;
 			}
 		}
 		copiar(aux);
 		
-		return( igualtats!=FILES*COLUMNES );
+		return( igualtats!=FILES*COLUMNES && organismes_vius!=0 );
 	}
 	
 	private int quantesVeines(int fil, int col) {
