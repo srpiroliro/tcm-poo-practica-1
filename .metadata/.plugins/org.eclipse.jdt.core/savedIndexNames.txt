@@ -1,6 +1,0 @@
-INDEX VERSION 1.131+C:\Users\rems\Documents\uni\eclipse-poo\.metadata\.plugins\org.eclipse.jdt.core
-3271706415.index
-2826148202.index
-1865797976.index
-531447281.index
-833484347.index
